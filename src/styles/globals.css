@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Virgil';
+  src: url('../assets/font/Virgil.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --font-sans: 'Anthropic Sans', sans-serif;
+  --font-mono: 'Anthropic Mono', monospace;
+  --font-human: 'Virgil', cursive;
+}

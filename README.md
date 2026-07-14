@@ -1,6 +1,6 @@
 # CASCADE: Human vs AI , Live at: [rishabh-m-m.github.io/CASCADE-Human-VS-AI](https://rishabh-m-m.github.io/CASCADE-Human-VS-AI/)
 
-A portfolio site built for CyberStar, presenting Cascade — a competitive game-playing AI agent built for COMP30024 (Artificial Intelligence) at the University of Melbourne. Cascade placed **1st** in the class tournament.
+A portfolio site built for CyberStar, presenting a competitive game-playing AI agent built for COMP30024 (Artificial Intelligence) at the University of Melbourne. Which placed **1st** in the class tournament.
 
 The site explores the contrast between human and AI decision-making through a dual visual identity: blue/torn-paper for the human side, black/red glow for the AI.
 
