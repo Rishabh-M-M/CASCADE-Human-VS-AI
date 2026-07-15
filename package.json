@@ -17,6 +17,7 @@
     "anthropic-fonts": "^1.1.0",
     "framer-motion": "^12.42.2",
     "gsap": "^3.15.0",
+    "papercss": "^1.9.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.1",

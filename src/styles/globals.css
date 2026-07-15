@@ -7,8 +7,36 @@
   font-style: normal;
 }
 
+/* CUSTOM STYLES */
+@utility text-shadow-neon {
+  text-shadow: 0 0 20px var(--color-ai-red-300);
+}
+.bg-human { background-image: url('../assets/human/human_bg.jpg'); }
+.bg-ai { background-color: var(--color-dark); }
+
 @theme {
+    /* FONT  */
   --font-sans: 'Anthropic Sans', sans-serif;
   --font-mono: 'Anthropic Mono', monospace;
   --font-human: 'Virgil', cursive;
+
+  /* COLOR PALLETTES*/
+  /* Human Colors */
+  --color-human-blue-100: #61A6FB;
+  --color-human-blue-200: #4183F2;
+  --color-human-blue-300: #2661E8;
+  --color-human-blue-400: #1F40B0;
+  --color-human-blue-500: #1710B5;
+
+  /* AI Colors */
+  --color-ai-white: #FFFFFF;
+  --color-ai-red-100: #F87171;
+  --color-ai-red-200: #C68E8B;
+  --color-ai-red-300: #DA2324;
+  --color-ai-red-400: #A02221;
+
+  /* Universal Colors */
+  --color-white: #FEFEFE;
+  --color-light: #E6E5E4;
+  --color-dark: #1F1E1F;
 }

@@ -1,15 +1,10 @@
-import { useState } from 'react'
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import Versus from './pages/versus/Versus'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <p className="font-sans">Anthropic Sans</p>
-      <p className="font-human">Virgil</p>
-    </>
+    <Routes>
+      <Route path="/" element={<Versus />} />
+    </Routes>
   )
 }
-
-export default App
