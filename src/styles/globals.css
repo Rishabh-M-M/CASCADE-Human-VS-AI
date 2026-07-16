@@ -9,8 +9,16 @@
 
 /* CUSTOM STYLES */
 @utility text-shadow-neon {
-  text-shadow: 0 0 20px var(--color-ai-red-300);
+  text-shadow: 0 0 20px var(--color-ai-red-100);
 }
+@utility box-shadow-neon {
+  box-shadow: 0 0 20px var(--color-ai-red-300);
+}
+
+.cursor-human { cursor: url('/cursors/human_cursor.png') 12 4, auto; }
+.cursor-robo { cursor: url('/cursors/robo_cursor.png') 12 4, auto; }
+.cursor-robo-pointer { cursor: url('/cursors/robo_pointer.png') 12 4, auto; }
+.cursor-human-pointer { cursor: url('/cursors/human_pointer.png') 12 4, pointer; }
 .bg-human { background-image: url('../assets/human/human_bg.jpg'); }
 .bg-ai { background-color: var(--color-dark); }
 
@@ -38,5 +46,5 @@
   /* Universal Colors */
   --color-white: #FEFEFE;
   --color-light: #E6E5E4;
-  --color-dark: #1F1E1F;
+  --color-dark: #151515;
 }
