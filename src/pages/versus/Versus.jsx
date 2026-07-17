@@ -3,9 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import NeonCursor from '../../components/NeonCursor'
 import Divider from '../../components/Divider'
-import humanLogo from '../../assets/human/Human_logo.svg'
-import aiLogo from '../../assets/ai/AI_logo.png'
+import SettingsToggle from '../../components/SettingsToggle'
+import { useSettings } from '../../context/SettingsContext'
 import { isHigh } from '../../utils/deviceTier'
+
+const humanLogo = `${import.meta.env.BASE_URL}assets/human/Human_logo.svg`
+const aiLogo = `${import.meta.env.BASE_URL}assets/ai/AI_logo.png`
 
 export default function Versus() {
   const [showNeon, setShowNeon] = useState(false)
@@ -13,6 +16,7 @@ export default function Versus() {
   const [picked, setPicked] = useState(null)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const navigate = useNavigate()
+  const { animations, cursors } = useSettings()
 
   useEffect(() => {
     const onResize = () => setWindowWidth(window.innerWidth)
@@ -36,14 +40,14 @@ export default function Versus() {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden">
-      {showNeon && !picked && isHigh && <NeonCursor />}
+      {showNeon && !picked && isHigh && animations && <NeonCursor />}
 
       <div className="absolute inset-0 bg-human bg-cover bg-center" />
 
       <div className="absolute inset-0 grid grid-cols-1 grid-rows-2 md:grid-cols-2 md:grid-rows-1">
 
         <div
-          className={`flex flex-col justify-center items-center gap-8 ${!isNarrow ? 'cursor-human' : ''}`}
+          className={`flex flex-col justify-center items-center gap-8 ${!isNarrow && cursors ? 'cursor-human' : ''}`}
           onMouseEnter={() => !picked && !isNarrow && setHover('human')}
           onMouseLeave={() => !picked && !isNarrow && setHover(null)}
         >
@@ -51,7 +55,7 @@ export default function Versus() {
           <AnimatePresence>
             {!picked && (
               <motion.button
-                className={`border border-primary font-human text-xl md:text-2xl px-6 md:px-8 py-2 md:py-3 bg-white/60 ${!isNarrow ? 'cursor-human-pointer' : 'cursor-pointer'}`}
+                className={`border border-primary font-human text-xl md:text-2xl px-6 md:px-8 py-2 md:py-3 bg-white/60 ${!isNarrow && cursors ? 'cursor-human-pointer' : 'cursor-pointer'}`}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.2 }}
                 onClick={pickHuman}
@@ -63,7 +67,7 @@ export default function Versus() {
         </div>
 
         <div
-          className={`bg-ai flex flex-col justify-center items-center gap-8 ${!isNarrow ? 'cursor-robo' : ''}`}
+          className={`bg-ai flex flex-col justify-center items-center gap-8 ${!isNarrow && cursors ? 'cursor-robo' : ''}`}
           onMouseEnter={() => { if (!picked && !isNarrow) { setShowNeon(true); setHover('ai') } }}
           onMouseLeave={() => { if (!picked && !isNarrow) { setShowNeon(false); setHover(null) } }}
         >
@@ -71,7 +75,7 @@ export default function Versus() {
           <AnimatePresence>
             {!picked && (
               <motion.button
-                className={`box-shadow-neon font-mono text-xl md:text-2xl px-6 md:px-8 py-2 md:py-3 bg-dark text-light hover:text-ai-red-100 border-2 border-ai-red-300 hover:text-shadow-neon ${!isNarrow ? 'cursor-robo-pointer' : 'cursor-pointer'}`}
+                className={`box-shadow-neon font-mono text-xl md:text-2xl px-6 md:px-8 py-2 md:py-3 bg-dark text-light hover:text-ai-red-100 border-2 border-ai-red-300 hover:text-shadow-neon ${!isNarrow && cursors ? 'cursor-robo-pointer' : 'cursor-pointer'}`}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.2 }}
                 onClick={pickAI}
@@ -84,7 +88,7 @@ export default function Versus() {
 
       </div>
 
-      <Divider hover={hover} picked={picked} isNarrow={isNarrow} />
+      <Divider hover={hover} picked={picked} isNarrow={isNarrow} animations={animations} />
 
       <AnimatePresence>
         {picked === 'human' && (
@@ -126,6 +130,7 @@ export default function Versus() {
           </motion.div>
         )}
       </AnimatePresence>
+      <SettingsToggle />
 
     </div>
   )

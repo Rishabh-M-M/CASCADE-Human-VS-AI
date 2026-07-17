@@ -4,11 +4,14 @@ import { BrowserRouter } from 'react-router-dom'
 import "anthropic-fonts"
 import './styles/globals.css'
 import App from './App.jsx'
+import { SettingsProvider } from './context/SettingsContext'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter basename="/CASCADE-Human-VS-AI">
-      <App />
+      <SettingsProvider>
+        <App />
+      </SettingsProvider>
     </BrowserRouter>
   </StrictMode>
 )

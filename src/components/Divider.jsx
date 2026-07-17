@@ -1,10 +1,10 @@
 import { useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import humanBg from '../assets/human/human_bg.jpg'
 import { isHigh } from '../utils/deviceTier'
 
 const PIXEL_COLS = 16
 const PIXEL_ROWS = 10
+const humanBg = `${import.meta.env.BASE_URL}assets/human/human_bg.jpg`
 
 function TearEffect() {
   const H = window.innerHeight
@@ -83,10 +83,10 @@ function TearSweep() {
   )
 }
 
-export default function Divider({ hover, picked, isNarrow }) {
+export default function Divider({ hover, picked, isNarrow, animations }) {
   return (
     <>
-      {isHigh && !isNarrow && (
+      {isHigh && !isNarrow && animations && (
         <div className="absolute top-0 h-full z-10 pointer-events-none" style={{ left: 'calc(50% - 32px)', width: '64px' }}>
           <AnimatePresence>
             {hover === 'human' && !picked && (
