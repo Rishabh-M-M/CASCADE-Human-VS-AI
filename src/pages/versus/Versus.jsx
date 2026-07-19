@@ -118,7 +118,7 @@ export default function Versus() {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {!picked && (
           <motion.div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30"
@@ -129,7 +129,7 @@ export default function Versus() {
             <span className="font-sans text-5xl md:text-6xl font-bold text-ai-red-300">S</span>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
       <SettingsToggle />
 
     </div>

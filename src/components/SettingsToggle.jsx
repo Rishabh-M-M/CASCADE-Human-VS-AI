@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useSettings } from '../context/SettingsContext'
 
 const TOOLTIPS = {
-  animations: 'enables hover effects and page transitions',
-  cursors: 'replaces default cursor with custom hand and robot cursors',
+  animations: 'adds a lot of animation effects for a complete interactive experience but can make site laggy for some',
+  cursors: 'replaces default cursor with custom cursors on large screens',
 }
 
 function Tooltip({ text }) {
@@ -52,7 +52,7 @@ export default function SettingsToggle() {
     <div className="fixed bottom-6 right-6 z-50">
       {open && (
         <div className="mb-3 bg-white/90 border border-gray-300 rounded p-4 flex flex-col gap-4 min-w-52 shadow-md">
-          <p className="font-human text-lg text-dark border-b border-gray-200 pb-2">settings</p>
+          <p className="font-human text-lg text-dark border-b border-gray-200 pb-2">Settings</p>
 
           <Toggle
             label="animations"
