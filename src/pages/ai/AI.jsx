@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import Footer from '../../components/Footer'
+import Nav from '../../components/Nav'
 
 const aiLogo = `${import.meta.env.BASE_URL}assets/ai/AI_logo.png`
 
@@ -32,9 +33,12 @@ export default function AI() {
     <div className="min-h-screen w-screen bg-ai flex flex-col">
 
       {/* NAV */}
-      <nav className="flex items-center px-8 py-4 z-10">
-        <motion.img layoutId="ai-logo" src={aiLogo} alt="AI" className="h-10 w-auto object-contain" />
-      </nav>
+      <nav className="flex items-center px-8 py-4 gap-4 justify-start">
+  <motion.img layoutId="ai-logo" src={aiLogo} alt="AI" className="h-10 w-auto object-contain" />
+  <div className="border-2 border-ai-red-300 rounded-xl box-shadow-neon">
+    <Nav />
+  </div>
+</nav>
 
       {/* THE CHALLENGE full screen intro */}
       <section className="h-screen flex flex-col justify-center px-16 max-w-4xl mx-auto w-full">

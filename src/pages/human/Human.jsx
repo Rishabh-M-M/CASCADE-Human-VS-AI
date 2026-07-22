@@ -1,13 +1,17 @@
 import { motion } from 'framer-motion'
 import Footer from '../../components/Footer'
+import ScribblyCard from '../../components/ScribblyCard'
+import Nav from '../../components/Nav'
 
 const humanLogo = `${import.meta.env.BASE_URL}assets/human/Human_logo.svg`
 
 function PaperSection({ children }) {
   return (
-    <div className="bg-white/70 rounded-sm px-8 py-8 shadow-sm">
-      {children}
-    </div>
+    <ScribblyCard color="#2661E8">
+      <div className="bg-white/70 rounded-sm px-8 py-8 shadow-sm">
+        {children}
+      </div>
+    </ScribblyCard>
   )
 }
 
@@ -16,13 +20,18 @@ export default function Human() {
     <div className="min-h-screen w-screen bg-human bg-cover bg-center bg-fixed flex flex-col">
 
       {/* NAV */}
-      <nav className="flex items-center px-8 py-4">
-        <motion.img layoutId="human-logo" src={humanLogo} alt="Human" className="h-10 w-auto object-contain" />
-      </nav>
+      <nav className="flex items-center px-8 py-4 gap-4 justify-start">
+  <motion.img layoutId="human-logo" src={humanLogo} alt="Human" className="h-10 w-auto object-contain" />
+  <ScribblyCard className="px-1 py-1">
+    <Nav />
+  </ScribblyCard>
+</nav>
 
       {/* HERO — parallax banner placeholder */}
       <div className="w-full h-screen flex items-center justify-center border-2 border-dashed border-human-blue-300/40">
-        <span className="font-human text-2xl text-human-blue-300/60">hero parallax banner</span>
+        <span className="font-human text-2xl text-human-blue-300/60">
+          hero parallax banner
+        </span>
       </div>
 
       {/* CONTENT */}
@@ -62,11 +71,14 @@ export default function Human() {
             tall enough, it explodes — sending pieces outward and potentially triggering a chain reaction
             across the board. One move can reshape the entire game a few turns later.
           </p>
+
           <p className="font-human text-lg text-dark leading-relaxed mb-4">
             Simple to pick up. Hard to play well.
           </p>
+
           <p className="font-human text-sm text-dark/60 italic mb-8">
-            Cascade was designed by the COMP30024 teaching staff at the University of Melbourne, along with the specs and the playable demo.
+            Cascade was designed by the COMP30024 teaching staff at the University of Melbourne,
+            along with the specs and the playable demo.
           </p>
 
           <div className="flex gap-4 flex-wrap">
@@ -90,6 +102,7 @@ export default function Human() {
             <div className="w-48 h-32 border-2 border-dashed border-human-blue-300/40 flex items-center justify-center rounded">
               <span className="font-human text-sm text-human-blue-300/60">mkorje github card</span>
             </div>
+
             <p className="font-human text-lg text-dark leading-relaxed">
               My teammate brought a lot to this project: sharp instincts for the game, strong technical
               judgment and the kind of reliability that makes a two-person project actually work.
@@ -99,13 +112,16 @@ export default function Human() {
 
           <div className="flex flex-col gap-6">
             <h3 className="font-human text-2xl text-human-blue-400">the ME</h3>
+
             <div className="w-48 h-48 border-2 border-dashed border-human-blue-300/40 flex items-center justify-center rounded">
               <span className="font-human text-sm text-human-blue-300/60">my photo</span>
             </div>
+
             <p className="font-human text-lg text-dark leading-relaxed">
               I'm Rishabh Maheshwari, a Computing and Software systems student at the University of Melbourne,
               originally from Mumbai. I really like building creative things and Cheesecake, especially Cheesecake.
             </p>
+
             <div className="flex gap-4">
               <button className="border border-primary font-human text-base px-6 py-2 bg-white/60 cursor-pointer">
                 LinkedIn
