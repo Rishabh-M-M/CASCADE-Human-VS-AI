@@ -18,6 +18,7 @@ export default function Nav({ size = 44 }) {
   const step = 240
 
   const isAI = location.pathname.startsWith('/ai')
+  const isEnd = location.pathname.startsWith('/end')
 
   const clearTimers = () => {
     timers.current.forEach(clearTimeout)
@@ -57,7 +58,7 @@ export default function Nav({ size = 44 }) {
   const isOpen = phase === 'open'
   const reforming = phase === 'closing' && merged >= n
   const showBlock = phase === 'closed' || reforming
-  const menuVisible = phase === 'open' || phase === 'closing'
+  const menuVisible = phase === 'open' || (phase === 'closing' && !reforming)
 
   const blockBg = isAI ? '#DA2324' : '#2661E8'
   const blockBorder = isAI ? '#F87171' : '#61A6FB'
@@ -77,9 +78,8 @@ export default function Nav({ size = 44 }) {
     if (phase === 'open') return { visible: true, num: 1, isAccumulator: false }
     if (phase === 'closed') return { visible: false, num: 1, isAccumulator: false }
 
-    // closing
-    const combinedFrom = n - merged // links from this index onward are gone
-    const accumulatorIdx = combinedFrom - 1 // the link currently accumulating
+    const combinedFrom = n - merged 
+    const accumulatorIdx = combinedFrom - 1
 
     if (i >= combinedFrom) return { visible: false, num: 1, isAccumulator: false }
     if (i === accumulatorIdx) return { visible: true, num: merged + 1, isAccumulator: true }
@@ -89,7 +89,6 @@ export default function Nav({ size = 44 }) {
   return (
     <div className="fixed top-4 right-4 z-50" style={{ width: 220 }}>
 
-      {/* trigger */}
       <button
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={isOpen}
@@ -133,7 +132,6 @@ export default function Nav({ size = 44 }) {
         </span>
       </button>
 
-      {/* dropdown — fixed width matches trigger */}
       {menuVisible && (
         <div
           className="mt-2 flex flex-col gap-1 p-2 rounded-xl shadow-xl overflow-hidden"
@@ -155,7 +153,7 @@ export default function Nav({ size = 44 }) {
                 onClick={() => { close(); setTimeout(() => navigate(href), n * step + 200) }}
                 onMouseEnter={() => setHoveredLink(i)}
                 onMouseLeave={() => setHoveredLink(null)}
-                className={`flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer w-full text-left ${fontClass}`}
+                className={`flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer w-full text-left font-mono`}
                 style={{
                   color: isHovered ? '#fff' : isActive ? blockBg : textColor,
                   background: isHovered ? blockBg : 'transparent',
